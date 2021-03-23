@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="STTR Cepu">
+    <title>App SPP | Login</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/brand/icon.png') }}" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/argon.css') }}" type="text/css">
+    <!-- RealPerson -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/realperson/jquery.realperson.css') }}">
+</head>
+
+<body class="bg-default">
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header bg-gradient-primary py-5 py-lg-5 pt-lg-10">
+            <div class="container">
+                <div class="header-body text-center mb-7">
+                    <div class="row justify-content-center">
+                        <h1 class="display-2 mb-0 text-dark">
+                            <span><i class="fab fa-atlassian"></i> App <b>SPP</b></span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page content -->
+        <div class="container mt--7 pb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-7">
+                    <div class="card bg-white border-0 mb-0">
+                        <div class="card-body px-lg-5 py-lg-5">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                    <div class="messages text-center mb-3">
+                                        {% for category, message in messages %}
+                                            {% if category == 'errors' %}
+                                                <span class="text-danger">{{ message }}</span>
+                                            {% else %}
+                                                <span class="text-success">{{ message }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            <form role="form" action="" method="post">
+                                <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Username" type="text" name="username" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Password" type="password" name="password" required>                                     </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <input class="form-control text-center text-uppercase" id="realPerson" name="realPerson" type="text" placeholder="Captcha" required>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-primary form-control my-0">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="py-5" id="footer-main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-2">
+                    <div class="copyright text-center text-xl-left text-muted">
+                        &copy; 2020 <a href="https://www.sttrcepu.ac.id">STTR Cepu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="{{ url_for('static', filename='assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/js-cookie/js.cookie.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+    <!-- RealPerson -->
+    <script src="../static/assets/vendor/realperson/jquery.plugin.js"></script>
+    <script src="{{ url_for('static', filename='assets/vendor/realperson/jquery.realperson.js') }}"></script>
+    <!-- Argon JS -->
+    <script src="{{ url_for('static', filename='assets/js/argon.js') }}"></script>
+    <script>
+        $(document).ready(() => {
+            $('#realPerson').realperson()
+        })
+    </script>
+</body>
+
+</html>

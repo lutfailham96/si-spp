@@ -1,0 +1,67 @@
+<!-- Sidenav -->
+<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header d-flex align-items-center">
+            <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+                <!--          <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">-->
+                <i class="fab fa-atlassian"></i>
+                <span>App <b>SPP</b></span>
+            </a>
+            <div class="ml-auto">
+                <!-- Sidenav toggler -->
+                <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a id="nav-dashboard" class="nav-link" href="{{ url_for('dashboard') }}">
+                            <i class="ni ni-shop text-primary"></i>
+                            <span class="nav-link-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-tahun-ajaran" href="{{ url_for('tahun_ajaran') }}" class="nav-link">
+                            <i class="fas fa-trophy text-yellow"></i>
+                            <span class="nav-link-text">Tahun Ajaran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-kelas" href="{{ url_for('kelas') }}" class="nav-link">
+                            <i class="fas fa-university text-orange"></i>
+                            <span class="nav-link-text">Kelas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-siswa" href="{{ url_for('siswa') }}" class="nav-link">
+                            <i class="fas fa-user-graduate text-info"></i>
+                            <span class="nav-link-text">Siswa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-pembayaran" class="nav-link" href="{{ url_for('pembayaran') }}">
+                            <i class="ni ni-money-coins text-success"></i>
+                            <span class="nav-link-text">Pembayaran</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="nav-laporan" class="nav-link" href="{{ url_for('laporan') }}">
+                            <i class="ni ni-briefcase-24 text-danger"></i>
+                            <span class="nav-link-text">Laporan</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

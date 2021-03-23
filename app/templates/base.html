@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="PCM Group">
+    <title>App SPP | {% block title %}{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/brand/icon.png') }}" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" type="text/css">
+    <!-- Page plugins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/select2/dist/css/select2.min.css') }}">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/argon.css') }}" type="text/css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" type="text/css">
+</head>
+
+<body>
+{% include '_sidebar.html' %}
+<!-- Main content -->
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center ml-md-auto">
+                    <li class="nav-item d-xl-none">
+                        <!-- Sidenav toggler -->
+                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                            <div class="media align-items-center">#}
+{#                                    <span class="text-green rounded-circle">#}
+{#                                        <i class="fas fa-school"></i>#}
+{#                                    </span>#}
+{#                                <div class="media-body ml-2 d-none d-lg-block">#}
+{#                                    <span class="mb-0 text-sm  font-weight-bold">SMK AL MUHAMMAD CEPU</span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </li>#}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="media align-items-center">
+                                    <span class="avatar avatar-sm rounded-circle">
+                                        <img alt="Image placeholder" src="{{ url_for('static', filename='assets/img/theme/team-4.jpg') }}">
+                                    </span>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm  font-weight-bold">{{ current_user.nama }}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">Selamat datang!</h6>
+                            </div>
+                            <a href="{{ url_for('profile') }}" class="dropdown-item">
+                                <i class="ni ni-single-02 text-cyan"></i>
+                                <span>Profil</span>
+                            </a>
+                            <a href="{{ url_for('setting') }}" class="dropdown-item">
+                                <i class="ni ni-settings-gear-65 text-info"></i>
+                                <span>Pengaturan</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ url_for('logout') }}" class="dropdown-item">
+                                <i class="ni ni-user-run text-warning"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    {% block content %}{% endblock %}
+</div>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="{{ url_for('static', filename='assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/js-cookie/js.cookie.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+<!-- Optional JS -->
+<script src="{{ url_for('static', filename='assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ url_for('static', filename='assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='assets/vendor/select2/dist/js/select2.min.js') }}"></script>
+<!-- Argon JS -->
+<script src="{{ url_for('static', filename='assets/js/argon.js') }}"></script>
+<!-- Axios -->
+<script src="{{ url_for('static', filename='assets/js/axios.min.js') }}"></script>
+<!-- Main script -->
+<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+</body>
+
+</html>

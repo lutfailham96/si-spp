@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">DASHBOARD</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Card stats -->
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Siswa</h5>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h2 font-weight-bold mb-0">{{ data.student.total }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-md float-left">
+                            <a href="{{ url_for('siswa') }}">Lihat <i class="fas fa-arrow-circle-right"></i></a>
+                        </p>
+                        <div class="float-right mt-3 mb-0 text-md">
+                            <i class="fas fa-male text-primary"> {{ data.student.male }}</i>
+                            <i class="fas fa-female text-pink"> {{ data.student.female }}</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Kelas</h5>
+                                <span class="h2 font-weight-bold mb-0">{{ data.class }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-md">
+                            <a href="{{ url_for('kelas') }}">Lihat <i class="fas fa-arrow-circle-right"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card card-stats">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Pembayaran</h5>
+                                <span class="h2 font-weight-bold mb-0" id="total-transactions">{{ data.transactions }}</span>
+                            </div>
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                    <i class="ni ni-money-coins"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 mb-0 text-md">
+                            <a href="{{ url_for('pembayaran') }}">Lihat <i class="fas fa-arrow-circle-right"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Info Sekolah -->
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-gradient-yellow text-center">
+                        <h3><strong>PROFIL SEKOLAH</strong></h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <h1 style="text-transform: uppercase">{{ data.school.name }}</h1>
+                            <img src="{{ url_for('static', filename='assets/img/brand/sekolah.jpeg') }}" alt="logo-sekolah" width="130px;">
+                            <br>
+                            <span style="text-transform: uppercase"><strong>{{ data.school.city }}</strong> - <strong>{{ data.school.province }}</strong></span>
+                            <br>
+                            <h5 class="mt-2" style="text-transform: uppercase">{{ data.school.address }}</h5>
+                            <br>
+                            <h3>Kepala Sekolah</h3>
+{#                            <i class="fas fa-user-circle fa-8x"></i>#}
+                            <h3>{{ data.school.school_head }}</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Info Sekolah -->
+        </div>
+        </div>
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}

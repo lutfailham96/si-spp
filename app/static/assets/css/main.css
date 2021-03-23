@@ -1,0 +1,51 @@
+.dt-buttons {
+    padding-left: 0;
+}
+
+#select2-filter-student-container {
+    min-width: 200px;
+}
+
+@media print {
+    /*body * {*/
+    /*    visibility: hidden;*/
+    /*}*/
+    /*#printable, #printable * {*/
+    /*    visibility: visible;*/
+    /*}*/
+    #printable {
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+}
+
+#student-nis:before {
+    content: ': ';
+}
+
+#student-name:before {
+    content: ': ';
+}
+
+#student-class:before {
+    content: ': ';
+}
+
+#student-school-year:before {
+    content: ': ';
+}
+
+#student-gender:before {
+    content: ': ';
+}
+
+#student-address:before {
+    content: ': ';
+}
+
+#print-container {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}

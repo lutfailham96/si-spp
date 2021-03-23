@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Kelas{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">KELAS</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Kelas</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-gradient-orange">
+                        <h3 class="text-white">Data Kelas</h3>
+                    </div>
+                    <div class="card-body card-body-sm">
+                        <div class="table-responsive py-2">
+                            <table class="table table-bordered table-sm text-center" id="table-class">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="w-10 p-2">No.</th>
+                                    <th class="p-3">Kelas</th>
+                                    <th class="p-3">Jumlah Siswa</th>
+                                    <th class="p-3">Laki-Laki</th>
+                                    <th class="p-3">Perempuan</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}

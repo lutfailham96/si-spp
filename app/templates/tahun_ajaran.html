@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Tahun Ajaran{% endblock %}
+
+{% block content %}
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">TAHUN AJARAN</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Tahun Ajaran</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-gradient-gray">
+                        <h3 class="text-white float-left">Data Tahun Ajaran</h3>
+                        <button id="add-school-year" type="button" class="btn btn-sm btn-success float-right">
+                            Tambah Tahun Ajaran
+                        </button>
+                    </div>
+                    <div class="card-body card-body-sm">
+                        <div class="table-responsive py-2">
+                            <table class="table table-bordered table-sm text-center" id="table-school-year">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="p-2 w-10">No.</th>
+                                    <th class="p-2">Tahun Ajaran</th>
+                                    <th colspan="p-2">Jumlah Siswa</th>
+                                    <th class="p-2">Aksi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal-school-year">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header pb-0">
+                                            <h3 id="title-school-year"></h3>
+                                        </div>
+                                        <div class="modal-body pt-0">
+                                            <form id="form-school-year">
+                                                <div class="form-group">
+                                                    <label for="input-school-year" class="form-control-label"></label>
+                                                    <input class="form-control form-control-sm" id="input-school-year" type="text" placeholder="2020/2021" required>
+                                                </div>
+                                                <div class="float-right ml-1">
+                                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                                </div>
+                                                <div class="float-right mr-1">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}Siswa{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">PEMBAYARAN SPP</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Pembayaran</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <!-- Card header -->
+                    <div class="card-header card-header-sm bg-gradient-yellow pb-3">
+                        <h3 class="float-left text-gray-dark">Transaksi Pembayaran SPP</h3>
+                    </div>
+                    <!-- ./Card-Header -->
+                    <!-- Card-Body -->
+                    <div class="card-body card-body-sm">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="form-group float-left mr-2">
+                                    {#                            <label for="filter-student" class="ml--1"></label>#}
+                                    <select id="filter-student" class="form-control-sm my-auto" title="Tampilkan Siswa" data-live-search="true" data-live-search-placeholder="NIS ...">
+                                    </select>
+                                </div>
+                                <button id="show-student" type="button" class="btn btn-sm btn-primary float-left">Tampilkan</button>
+                            </div>
+                            <div class="col-sm-12 col-lg-5">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Data Siswa
+                                    </div>
+                                    <div class="card-body overflow-auto">
+                                        <table class="table table-borderless text-left">
+                                            <tbody>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">NIS</th>
+                                                <td id="student-nis" class="py-1 pr-0"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">Nama</th>
+                                                <td id="student-name" class="py-1 pr-0 text-uppercase"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">Kelas</th>
+                                                <td id="student-class" class="py-1 pr-0"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">Tahun Ajaran</th>
+                                                <td id="student-school-year" class="py-1 pr-0"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">Jenis Kelamin</th>
+                                                <td id="student-gender" class="py-1 pr-0 text-uppercase"></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="width: 80px" class="py-1 px-0">Alamat</th>
+                                                <td id="student-address" class="py-1 pr-0"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-7">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Input Pembayaran
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="form-transaction">
+                                            <div class="form-group row">
+                                                <label class="col-md-2 py-1 col-form-label form-control-label">Tahun</label>
+                                                <div class="col-md-10">
+                                                    <input id="transaction-year" class="form-control form-control-sm" type="number" placeholder="2020" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 py-1 col-form-label form-control-label">Bulan</label>
+                                                <div class="col-md-10">
+                                                    <select onchange="generatePayment()" id="transaction-month" class="form-control form-control-sm" required>
+                                                        <option value="0">Januari</option>
+                                                        <option value="1">Februari</option>
+                                                        <option value="2">Maret</option>
+                                                        <option value="3">April</option>
+                                                        <option value="4">Mei</option>
+                                                        <option value="5">Juni</option>
+                                                        <option value="6">Juli</option>
+                                                        <option value="7">Agustus</option>
+                                                        <option value="8">September</option>
+                                                        <option value="9">Oktober</option>
+                                                        <option value="10">November</option>
+                                                        <option value="11">Desember</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-md-2 py-1 col-form-label form-control-label">Nominal</label>
+                                                <div class="col-md-10">
+                                                    <input id="transaction-nominal" class="form-control form-control-sm" type="text" required disabled>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-icon btn-success btn-sm float-right" type="submit" disabled>
+                                                <span class="btn-inner--icon"><i class="fa fa-save"></i></span>
+                                                <span class="btn-inner--text">Simpan</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="table-responsive py-2">
+                                    <table class="table table-bordered table-sm text-center" id="table-transaction">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th class="w-2 p-3">No.</th>
+                                            <th class="w-25 p-3">NIS</th>
+                                            <th class="w-25 p-3">Nama Siswa</th>
+                                            <th class="w-25 p-3">Jenis<br>Siswa</th>
+                                            <th class="w-25 p-3">Nominal</th>
+                                            <th class="w-25 p-3">Status</th>
+                                            <th class="w-25 p-3">Tahun</th>
+                                            <th class="w-25 p-3">Bulan</th>
+                                            <th class="w-25 p-3">Aksi</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Print area -->
+        <div id="print-container">
+            <div id="printable" class="container">
+                <h1>Bukti Pembayaran SPP</h1>
+                <hr>
+                <table class="table table-borderless d-flex justify-content-center">
+                    <tr>
+                        <th class="p-2" style="width: 100px">No. </th>
+                        <td class="p-2">: <span id="print-uuid"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="p-2">Nama</th>
+                        <td class="p-2">: <span id="print-name"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="p-2">NIS</th>
+                        <td class="p-2">: <span id="print-nis"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="p-2">Kelas</th>
+                        <td class="p-2">: <span id="print-class"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="p-2">Keterangan</th>
+                        <td class="p-2">: Pembayaran SPP bulan <span id="print-month" class="italic"></span> tahun <span id="print-year"></span></td>
+                    </tr>
+                    <tr>
+                        <th class="p-2">Status</th>
+                        <td class="p-2">: <span id="print-status"></span></td>
+                    </tr>
+                </table>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 d-flex">
+                        <span>Jumlah: <strong id="print-nominal"></strong></span>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 mb-5 d-flex justify-content-center">
+                                <span class="float-right">2019-20-20</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+                                <span class="float-right">( Admin TU )</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Pengaturan{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">PENGATURAN</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Pengaturan</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <!-- HTML5 inputs -->
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header bg-gradient-yellow">
+                <h3 class="mb-0">Pengaturan Identitas Sekolah</h3>
+            </div>
+            <!-- Card body -->
+            <div class="card-body">
+                <form id="form-school">
+                    <div class="form-group">
+                        <label for="school-name" class="form-control-label">Nama Sekolah</label>
+                        <input id="school-name" class="form-control form-control-sm" type="text" placeholder="Nama sekolah" value="{{ data.nama_sekolah }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="school-address" class="form-control-label">Alamat Sekolah</label>
+                        <input id="school-address" class="form-control form-control-sm" type="text" placeholder="Desa, Kecamatan, Kabupaten, Provinsi" value="{{ data.alamat_sekolah }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="school-head" class="form-control-label">Kepala Sekolah</label>
+                        <input id="school-head" class="form-control form-control-sm" type="text" placeholder="Kepala sekolah" value="{{ data.kepala_sekolah }}" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-icon float-right">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-save"></i>
+                        </span>
+                        <span class="btn-inner--text">
+                            Simpan
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- Footer -->
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Siswa{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">LAPORAN</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="{{ url_for('dashboard') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Laporan</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="surtitle">Pembayaran</h6>
+                        <h5 class="h3 mb-0">Tunggakan Pembayaran</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <canvas id="chart-transaction-compare" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="surtitle">Pembayaran</h6>
+                        <h5 class="h3 mb-0">Pembayaran Pertahun</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <canvas id="chart-transaction-annual" class="chart-canvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header bg-gradient-blue">
+                        <h3 class="text-white">Data Pembayaran</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive py-2">
+                            <table id="table-report" class="table table-bordered table-sm text-center">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="w-2 p-3">No.</th>
+                                    <th class="w-25 p-3">Kode Transaksi</th>
+                                    <th class="w-25 p-3">NIS</th>
+                                    <th class="w-25 p-3">Nama Siswa</th>
+                                    <th class="w-25 p-3">Tahun</th>
+                                    <th class="w-25 p-3">Bulan</th>
+                                    <th class="w-25 p-3">Nominal</th>
+                                    <th class="w-25 p-3">Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        {% include '_footer.html' %}
+    </div>
+{% endblock %}
